@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import {
   UserIcon,
   LockClosedIcon,
@@ -16,14 +17,54 @@ function Signup() {
     password: "",
     confirmPassword: "",
   });
+  const [message, setMessage] = useState(""); // success/error message
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Signup data:", formData);
+
+    // simple password match check
+    if (formData.password !== formData.confirmPassword) {
+      setMessage("Passwords do not match 😭");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
+    try {
+      const res = await axios.post("http://127.0.0.1:8000/api/register", {
+        name: formData.username,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      setMessage(res.data.message || "Signup successful 🎉");
+      setLoading(false);
+
+      // redirect to login page after successful signup
+      setTimeout(() => navigate("/login"), 1500);
+    } catch (err) {
+      setLoading(false);
+
+      if (err.response && err.response.data) {
+        // Laravel validation errors
+        const errors = err.response.data.errors;
+        if (errors) {
+          setMessage(Object.values(errors).flat().join(" "));
+        } else if (err.response.data.message) {
+          setMessage(err.response.data.message);
+        } else {
+          setMessage("Signup failed 😭");
+        }
+      } else {
+        setMessage("Network error 😭");
+      }
+    }
   };
 
   return (
@@ -50,6 +91,7 @@ function Signup() {
               value={formData.username}
               onChange={handleChange}
               className="w-full bg-transparent outline-none text-[#D3DAD9] placeholder-[#BFBFBF]"
+              required
             />
           </div>
 
@@ -63,6 +105,7 @@ function Signup() {
               value={formData.email}
               onChange={handleChange}
               className="w-full bg-transparent outline-none text-[#D3DAD9] placeholder-[#BFBFBF]"
+              required
             />
           </div>
 
@@ -76,6 +119,7 @@ function Signup() {
               value={formData.password}
               onChange={handleChange}
               className="w-full bg-transparent outline-none text-[#D3DAD9] placeholder-[#BFBFBF]"
+              required
             />
           </div>
 
@@ -89,15 +133,19 @@ function Signup() {
               value={formData.confirmPassword}
               onChange={handleChange}
               className="w-full bg-transparent outline-none text-[#D3DAD9] placeholder-[#BFBFBF]"
+              required
             />
           </div>
 
           {/* Sign Up Button */}
           <button
             type="submit"
-            className="flex items-center justify-center gap-2 bg-[#715A5A] hover:bg-[#8A6D6D] text-[#D3DAD9] py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+            disabled={loading}
+            className={`flex items-center justify-center gap-2 bg-[#715A5A] hover:bg-[#8A6D6D] text-[#D3DAD9] py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            Sign Up
+            {loading ? "Signing Up..." : "Sign Up"}
           </button>
 
           {/* Go Back Button */}
@@ -110,6 +158,11 @@ function Signup() {
             Go Back
           </button>
         </form>
+
+        {/* Message */}
+        {message && (
+          <p className="mt-4 text-center text-red-400 font-semibold">{message}</p>
+        )}
 
         {/* Footer */}
         <p className="text-sm text-[#BFBFBF] mt-6">

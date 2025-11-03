@@ -1,18 +1,42 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { LockClosedIcon, UserIcon, ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/solid";
 
 function Login() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: "", password: "" });
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login data:", formData);
+    setLoading(true);
+    setMessage("");
+
+    try {
+      const res = await axios.post("http://127.0.0.1:8000/api/login", formData);
+      setMessage(res.data.message || "Login successful 🎉");
+      setLoading(false);
+
+      // Optional: save user info or token to localStorage
+      // localStorage.setItem("user", JSON.stringify(res.data.user));
+      // localStorage.setItem("token", res.data.token);
+
+      // redirect to dashboard after login
+      setTimeout(() => navigate("/dashboard"), 1000);
+    } catch (err) {
+      setLoading(false);
+      if (err.response && err.response.data && err.response.data.message) {
+        setMessage(err.response.data.message);
+      } else {
+        setMessage("Network error 😭");
+      }
+    }
   };
 
   return (
@@ -23,9 +47,7 @@ function Login() {
 
       {/* Card */}
       <div className="relative z-10 bg-[#37353E] text-[#D3DAD9] rounded-2xl shadow-2xl p-10 w-[400px] flex flex-col items-center animate-fadeIn">
-        <h2 className="text-3xl font-bold mb-8 text-[#D3DAD9] tracking-wide">
-          Welcome Back 👋
-        </h2>
+        <h2 className="text-3xl font-bold mb-8 text-[#D3DAD9] tracking-wide">Welcome Back 👋</h2>
 
         <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6">
           {/* Username */}
@@ -38,6 +60,7 @@ function Login() {
               value={formData.username}
               onChange={handleChange}
               className="w-full bg-transparent outline-none text-[#D3DAD9] placeholder-[#BFBFBF]"
+              required
             />
           </div>
 
@@ -51,15 +74,19 @@ function Login() {
               value={formData.password}
               onChange={handleChange}
               className="w-full bg-transparent outline-none text-[#D3DAD9] placeholder-[#BFBFBF]"
+              required
             />
           </div>
 
           {/* Login Button */}
           <button
             type="submit"
-            className="flex items-center justify-center gap-2 bg-[#715A5A] hover:bg-[#8A6D6D] text-[#D3DAD9] py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+            disabled={loading}
+            className={`flex items-center justify-center gap-2 bg-[#715A5A] hover:bg-[#8A6D6D] text-[#D3DAD9] py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            Login <ArrowRightIcon className="h-5 w-5" />
+            {loading ? "Logging In..." : "Login"} <ArrowRightIcon className="h-5 w-5" />
           </button>
 
           {/* Go Back Button */}
@@ -72,6 +99,11 @@ function Login() {
             Go Back
           </button>
         </form>
+
+        {/* Message */}
+        {message && (
+          <p className="mt-4 text-center text-red-400 font-semibold">{message}</p>
+        )}
 
         {/* Footer */}
         <p className="text-sm text-[#BFBFBF] mt-6">
