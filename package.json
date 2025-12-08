@@ -10,12 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.1.16",
     "axios": "^1.13.1",
+    "docx-preview": "^0.3.7",
+    "pdfjs-dist": "^5.4.394",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.5",
+    "recharts": "^3.4.1",
     "tailwindcss": "^4.1.16"
   },
   "devDependencies": {

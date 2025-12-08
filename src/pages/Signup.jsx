@@ -1,193 +1,225 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import {
-  UserIcon,
-  LockClosedIcon,
-  EnvelopeIcon,
-  UserPlusIcon,
-  ArrowLeftIcon,
-} from "@heroicons/react/24/solid";
+"use client"
+
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { UserIcon, LockClosedIcon, EnvelopeIcon, UserPlusIcon, ArrowLeftIcon } from "@heroicons/react/24/solid"
+import { CheckCircleIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline"
+import api from "../api"
 
 function Signup() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
-  });
-  const [message, setMessage] = useState(""); // success/error message
-  const [loading, setLoading] = useState(false);
+  })
+  const [detectedRole, setDetectedRole] = useState("user")
+  const [message, setMessage] = useState("")
+  const [messageType, setMessageType] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
+
+  const handleEmailChange = (e) => {
+    const { value } = e.target
+    setFormData({ ...formData, email: value })
+    // Additional logic to detect role can be added here
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    setLoading(true)
+    setMessage("")
 
-    // simple password match check
+    // Validate passwords match
     if (formData.password !== formData.confirmPassword) {
-      setMessage("Passwords do not match 😭");
-      return;
+      setLoading(false)
+      setMessageType("error")
+      setMessage("Passwords do not match!")
+      return
     }
-
-    setLoading(true);
-    setMessage("");
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/register", {
-        name: formData.username,
+      const response = await api.post("/register", {
+        name: formData.name,
         email: formData.email,
         password: formData.password,
-      });
+        password_confirmation: formData.confirmPassword,
+      })
 
-      setMessage(res.data.message || "Signup successful 🎉");
-      setLoading(false);
+      setMessage("Signup successful! Redirecting to login...")
+      setMessageType("success")
+      setLoading(false)
 
-      // redirect to login page after successful signup
-      setTimeout(() => navigate("/login"), 1500);
+      // Redirect to login page after 2 seconds
+      setTimeout(() => {
+        navigate("/login")
+      }, 2000)
     } catch (err) {
-      setLoading(false);
-
-      if (err.response && err.response.data) {
-        // Laravel validation errors
-        const errors = err.response.data.errors;
-        if (errors) {
-          setMessage(Object.values(errors).flat().join(" "));
-        } else if (err.response.data.message) {
-          setMessage(err.response.data.message);
-        } else {
-          setMessage("Signup failed 😭");
-        }
+      setLoading(false)
+      setMessageType("error")
+      if (err.response?.data?.errors) {
+        setMessage(Object.values(err.response.data.errors).flat().join(" "))
+      } else if (err.response?.data?.message) {
+        setMessage(err.response.data.message)
       } else {
-        setMessage("Network error 😭");
+        setMessage("Network error. Please try again.")
       }
     }
-  };
+  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#D3DAD9] overflow-hidden relative">
-      {/* Animated Background Blobs */}
-      <div className="absolute w-[500px] h-[500px] bg-[#715A5A] rounded-full blur-3xl opacity-20 animate-pulse -top-24 -left-24"></div>
-      <div className="absolute w-[400px] h-[400px] bg-[#37353E] rounded-full blur-3xl opacity-20 animate-pulse top-20 -right-20"></div>
-
-      {/* Card */}
-      <div className="relative z-10 bg-[#37353E] text-[#D3DAD9] rounded-2xl shadow-2xl p-10 w-[420px] flex flex-col items-center animate-fadeIn">
-        <h2 className="text-3xl font-bold mb-8 text-[#D3DAD9] tracking-wide flex items-center gap-2">
-          <UserPlusIcon className="h-7 w-7 text-[#715A5A]" />
-          Create Account
-        </h2>
-
-        <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6">
-          {/* Username */}
-          <div className="flex items-center gap-3 bg-[#44444E] p-3 rounded-lg focus-within:ring-2 focus-within:ring-[#715A5A] transition-all duration-300">
-            <UserIcon className="h-6 w-6 text-[#D3DAD9]" />
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={formData.username}
-              onChange={handleChange}
-              className="w-full bg-transparent outline-none text-[#D3DAD9] placeholder-[#BFBFBF]"
-              required
-            />
-          </div>
-
-          {/* Email */}
-          <div className="flex items-center gap-3 bg-[#44444E] p-3 rounded-lg focus-within:ring-2 focus-within:ring-[#715A5A] transition-all duration-300">
-            <EnvelopeIcon className="h-6 w-6 text-[#D3DAD9]" />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full bg-transparent outline-none text-[#D3DAD9] placeholder-[#BFBFBF]"
-              required
-            />
-          </div>
-
-          {/* Password */}
-          <div className="flex items-center gap-3 bg-[#44444E] p-3 rounded-lg focus-within:ring-2 focus-within:ring-[#715A5A] transition-all duration-300">
-            <LockClosedIcon className="h-6 w-6 text-[#D3DAD9]" />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full bg-transparent outline-none text-[#D3DAD9] placeholder-[#BFBFBF]"
-              required
-            />
-          </div>
-
-          {/* Confirm Password */}
-          <div className="flex items-center gap-3 bg-[#44444E] p-3 rounded-lg focus-within:ring-2 focus-within:ring-[#715A5A] transition-all duration-300">
-            <LockClosedIcon className="h-6 w-6 text-[#D3DAD9]" />
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              className="w-full bg-transparent outline-none text-[#D3DAD9] placeholder-[#BFBFBF]"
-              required
-            />
-          </div>
-
-          {/* Sign Up Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className={`flex items-center justify-center gap-2 bg-[#715A5A] hover:bg-[#8A6D6D] text-[#D3DAD9] py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
-              loading ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-          >
-            {loading ? "Signing Up..." : "Sign Up"}
-          </button>
-
-          {/* Go Back Button */}
-          <button
-            type="button"
-            onClick={() => navigate("/")}
-            className="flex items-center justify-center gap-2 text-[#D3DAD9] hover:text-[#715A5A] transition-all duration-300 mt-2"
-          >
-            <ArrowLeftIcon className="h-5 w-5" />
-            Go Back
-          </button>
-        </form>
-
-        {/* Message */}
-        {message && (
-          <p className="mt-4 text-center text-red-400 font-semibold">{message}</p>
-        )}
-
-        {/* Footer */}
-        <p className="text-sm text-[#BFBFBF] mt-6">
-          Already have an account?{" "}
-          <span
-            onClick={() => navigate("/login")}
-            className="text-[#715A5A] hover:underline cursor-pointer"
-          >
-            Log in
-          </span>
-        </p>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden relative py-8">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-100 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
       </div>
 
-      {/* Fade-In Animation */}
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.8s ease-out forwards;
-        }
-      `}</style>
+      <div className="relative z-10 w-full max-w-md">
+        <div className="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-t-2xl px-8 py-12 text-white text-center shadow-lg">
+          <div className="flex justify-center mb-4">
+            <img
+              src="https://minsu.edu.ph/template/images/logo.png"
+              alt="Logo"
+              className="w-16 h-16 bg-white rounded-full p-2"
+            />
+          </div>
+          <h2 className="text-3xl font-bold flex items-center justify-center gap-2 mb-2">
+            <UserPlusIcon className="w-8 h-8" />
+            Create Account
+          </h2>
+          <p className="text-indigo-100 text-sm">Join our research ethics community</p>
+        </div>
+
+        <div className="bg-white rounded-b-2xl shadow-lg p-8 border border-slate-200">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            <div className="relative">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
+              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-indigo-500 focus-within:bg-white transition-all">
+                <UserIcon className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter your full name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full bg-transparent outline-none text-slate-900 placeholder-slate-400 text-sm"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="relative">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
+              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-indigo-500 focus-within:bg-white transition-all">
+                <EnvelopeIcon className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleEmailChange}
+                  className="w-full bg-transparent outline-none text-slate-900 placeholder-slate-400 text-sm"
+                  required
+                />
+              </div>
+              {detectedRole !== "user" && (
+                <p className="text-xs text-indigo-600 mt-2 font-medium">
+                  Role detected: <span className="capitalize font-bold">{detectedRole}</span>
+                </p>
+              )}
+            </div>
+
+            <div className="relative">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Password</label>
+              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-indigo-500 focus-within:bg-white transition-all">
+                <LockClosedIcon className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Create a strong password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="w-full bg-transparent outline-none text-slate-900 placeholder-slate-400 text-sm"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="relative">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Confirm Password</label>
+              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-indigo-500 focus-within:bg-white transition-all">
+                <LockClosedIcon className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm your password"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  className="w-full bg-transparent outline-none text-slate-900 placeholder-slate-400 text-sm"
+                  required
+                />
+              </div>
+            </div>
+
+            {message && (
+              <div
+                className={`flex items-start gap-3 p-3 rounded-lg text-sm ${messageType === "success" ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}
+              >
+                {messageType === "success" ? (
+                  <CheckCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                ) : (
+                  <ExclamationCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                )}
+                <span className="font-medium">{message}</span>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md"
+            >
+              {loading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  Creating Account...
+                </>
+              ) : (
+                <>
+                  <UserPlusIcon className="w-5 h-5" />
+                  Sign Up
+                </>
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => navigate("/")}
+              className="w-full flex items-center justify-center gap-2 text-slate-700 hover:text-indigo-600 hover:bg-indigo-50 py-2 px-4 rounded-lg transition-all font-medium text-sm"
+            >
+              <ArrowLeftIcon className="w-4 h-4" />
+              Back to Home
+            </button>
+
+            <p className="text-center text-sm text-slate-600 mt-2">
+              Already have an account?{" "}
+              <span
+                onClick={() => navigate("/login")}
+                className="text-indigo-600 font-semibold hover:text-indigo-700 cursor-pointer transition-colors"
+              >
+                Log in
+              </span>
+            </p>
+          </form>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
-export default Signup;
+export default Signup
