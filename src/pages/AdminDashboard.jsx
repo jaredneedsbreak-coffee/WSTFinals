@@ -232,7 +232,7 @@ function AdminDashboard() {
   }, [activeTab])
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-50">
+    <div className="flex min-h-screen bg-white text-slate-900">
       <AdminSidePanel activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="flex-1 ml-64 p-8">
@@ -240,8 +240,8 @@ function AdminDashboard() {
           <>
             <header className="flex items-center justify-between mb-12">
               <div>
-                <h1 className="text-5xl font-black text-white mb-2 tracking-tight">Dashboard Overview</h1>
-                <p className="text-slate-400 text-lg">Monitor proposals, reviewers, and platform analytics</p>
+                <h1 className="text-5xl font-black text-slate-900 mb-2 tracking-tight">Dashboard Overview</h1>
+                <p className="text-slate-600 text-lg">Monitor proposals, reviewers, and platform analytics</p>
               </div>
               <button
                 onClick={() => announcementsRef.current?.openModal?.()}
@@ -279,9 +279,9 @@ function AdminDashboard() {
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               {/* Submission Trends */}
-              <div className="md:col-span-2 bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl border border-slate-600/30">
-                <h2 className="text-2xl font-bold text-white mb-2">Submission Trends</h2>
-                <p className="text-slate-400 text-sm mb-6">Monthly submissions over time</p>
+              <div className="md:col-span-2 bg-white to-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 className="text-2xl font-bold text-slate-900 mb-2">Submission Trends</h2>
+                <p className="text-slate-600 text-sm mb-6">Monthly submissions over time</p>
                 <ResponsiveContainer width="100%" height={320}>
                   <AreaChart data={analytics}>
                     <defs>
@@ -315,9 +315,9 @@ function AdminDashboard() {
               </div>
 
               {/* Proposals Status Distribution */}
-              <div className="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl border border-slate-600/30">
-                <h2 className="text-2xl font-bold text-white mb-2">Status Distribution</h2>
-                <p className="text-slate-400 text-sm mb-6">Overall proposal breakdown</p>
+              <div className="bg-white to-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 className="text-2xl font-bold text-slate-900 mb-2">Status Distribution</h2>
+                <p className="text-slate-600 text-sm mb-6">Overall proposal breakdown</p>
                 <ResponsiveContainer width="100%" height={280}>
                   <PieChart>
                     <Pie
@@ -355,9 +355,9 @@ function AdminDashboard() {
             {/* Review Results & Performance */}
             <div className="grid md:grid-cols-2 gap-6 mb-12">
               {/* Review Results */}
-              <div className="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl border border-slate-600/30">
-                <h2 className="text-2xl font-bold text-white mb-2">Review Results</h2>
-                <p className="text-slate-400 text-sm mb-6">Monthly approval and rejection breakdown</p>
+              <div className="bg-white to-white p-8 rounded-2xl shadow-sm border border-slate-200\">
+                <h2 className="text-2xl font-bold text-slate-900 mb-2">Review Results</h2>
+                <p className="text-slate-600 text-sm mb-6">Monthly approval and rejection breakdown</p>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={analytics}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#475569" />
@@ -380,12 +380,12 @@ function AdminDashboard() {
               </div>
 
               {/* Reviewer Performance */}
-              <div className="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl border border-slate-600/30">
-                <h2 className="text-2xl font-bold text-white mb-2">Top Reviewers</h2>
-                <p className="text-slate-400 text-sm mb-6">Most active reviewers in system</p>
+              <div className="bg-white to-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 className="text-2xl font-bold text-slate-900 mb-2">Top Reviewers</h2>
+                <p className="text-slate-600 text-sm mb-6">Most active reviewers in system</p>
                 <div className="space-y-4">
                   {!reviewers || reviewers.length === 0 ? (
-                    <p className="text-slate-400 text-center py-8">No reviewers registered yet</p>
+                    <p className="text-slate-600 text-center py-8">No reviewers registered yet</p>
                   ) : (
                     (() => {
                       const sortedReviewers = reviewers
@@ -403,11 +403,11 @@ function AdminDashboard() {
                           {paginatedReviewers.map((reviewer, idx) => (
                             <div
                               key={reviewer.id || idx}
-                              className="flex items-center justify-between p-4 bg-slate-700/50 rounded-xl border border-slate-600/30 hover:border-green-500/50 transition-colors"
+                              className="flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-green-500/50 transition-colors"
                             >
                               <div className="flex-1">
-                                <p className="font-semibold text-white mb-1">{reviewer.name || "Unknown"}</p>
-                                <p className="text-sm text-slate-400">{reviewer.reviews || 0} papers assigned</p>
+                                <p className="font-semibold text-slate-900 mb-1">{reviewer.name || "Unknown"}</p>
+                                <p className="text-sm text-slate-600">{reviewer.reviews || 0} papers assigned</p>
                               </div>
                               <div className="text-right">
                                 <div className="flex items-center justify-end gap-2 mb-1">
@@ -419,7 +419,7 @@ function AdminDashboard() {
                                   </div>
                                   <span className="text-sm font-bold text-emerald-400">{reviewer.accuracy || 0}%</span>
                                 </div>
-                                <p className="text-xs text-slate-400">Completion Rate</p>
+                                <p className="text-xs text-slate-600">Completion Rate</p>
                               </div>
                             </div>
                           ))}
@@ -428,17 +428,17 @@ function AdminDashboard() {
                               <button
                                 onClick={() => setReviewersPage((p) => Math.max(1, p - 1))}
                                 disabled={reviewersPage === 1}
-                                className="px-3 py-1 text-sm bg-slate-700 text-slate-300 rounded hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                className="px-3 py-1 text-sm bg-slate-200 text-slate-900 rounded hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                               >
                                 ← Previous
                               </button>
-                              <span className="text-sm text-slate-400">
+                              <span className="text-sm text-slate-600">
                                 Page {reviewersPage} of {totalReviewerPages}
                               </span>
                               <button
                                 onClick={() => setReviewersPage((p) => Math.min(totalReviewerPages, p + 1))}
                                 disabled={reviewersPage === totalReviewerPages}
-                                className="px-3 py-1 text-sm bg-slate-700 text-slate-300 rounded hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                className="px-3 py-1 text-sm bg-slate-200 text-slate-900 rounded hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                               >
                                 Next →
                               </button>
@@ -455,9 +455,9 @@ function AdminDashboard() {
             {/* Additional Analytics - Revision & Under Review */}
             <div className="grid md:grid-cols-2 gap-6 mb-12">
               {/* Revision Requests */}
-              <div className="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl border border-slate-600/30">
-                <h2 className="text-2xl font-bold text-white mb-2">Revision Requests</h2>
-                <p className="text-slate-400 text-sm mb-6">Papers sent back for revision by reviewers</p>
+              <div className="bg-white to-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 className="text-2xl font-bold text-slate-900 mb-2">Revision Requests</h2>
+                <p className="text-slate-600 text-sm mb-6">Papers sent back for revision by reviewers</p>
                 <div className="space-y-3">
                   {!revisionPapers || revisionPapers.length === 0 ? (
                     <p className="text-slate-400 text-center py-8">No papers requiring revision</p>
@@ -473,10 +473,10 @@ function AdminDashboard() {
                             {paginatedRevisions.map((paper) => (
                               <div
                                 key={paper.id}
-                                className="flex items-start justify-between p-4 bg-slate-700/50 rounded-xl border border-amber-500/30 hover:border-amber-500/60 transition-colors"
+                                className="flex items-start justify-between p-4 bg-slate-50 rounded-xl border border-amber-200 hover:border-amber-400 transition-colors"
                               >
                                 <div className="flex-1 min-w-0">
-                                  <p className="font-semibold text-white mb-1 truncate">{paper.title || 'Untitled'}</p>
+                                  <p className="font-semibold text-slate-900 mb-1 truncate\">{paper.title || 'Untitled'}</p>
                                   <p className="text-sm text-slate-400 truncate">
                                     Author: {paper.user?.name || paper.user_id || 'Unknown'}
                                   </p>
@@ -498,17 +498,17 @@ function AdminDashboard() {
                               <button
                                 onClick={() => setRevisionPage((p) => Math.max(1, p - 1))}
                                 disabled={revisionPage === 1}
-                                className="px-3 py-1 text-sm bg-slate-700 text-slate-300 rounded hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                className="px-3 py-1 text-sm bg-slate-200 text-slate-900 rounded hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                               >
                                 ← Previous
                               </button>
-                              <span className="text-sm text-slate-400">
+                              <span className="text-sm text-slate-600">
                                 Page {revisionPage} of {totalRevisionPages}
                               </span>
                               <button
                                 onClick={() => setRevisionPage((p) => Math.min(totalRevisionPages, p + 1))}
                                 disabled={revisionPage === totalRevisionPages}
-                                className="px-3 py-1 text-sm bg-slate-700 text-slate-300 rounded hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                className="px-3 py-1 text-sm bg-slate-200 text-slate-900 rounded hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                               >
                                 Next →
                               </button>
@@ -522,9 +522,9 @@ function AdminDashboard() {
               </div>
 
               {/* Under Review Papers */}
-              <div className="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl border border-slate-600/30">
-                <h2 className="text-2xl font-bold text-white mb-2">Under Review Progress</h2>
-                <p className="text-slate-400 text-sm mb-6">Papers currently under review by month</p>
+              <div className="bg-white to-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 className="text-2xl font-bold text-slate-900 mb-2">Under Review Progress</h2>
+                <p className="text-slate-600 text-sm mb-6">Papers currently under review by month</p>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={analytics}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#475569" />
@@ -546,9 +546,9 @@ function AdminDashboard() {
             </div>
 
             {/* Complete Workflow Overview */}
-            <div className="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl border border-slate-600/30 mb-12">
-              <h2 className="text-2xl font-bold text-white mb-2">Complete Proposal Workflow</h2>
-              <p className="text-slate-400 text-sm mb-6">All proposal statuses by month</p>
+            <div className="bg-white to-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-12">
+              <h2 className="text-2xl font-bold text-slate-900 mb-2">Complete Proposal Workflow</h2>
+              <p className="text-slate-600 text-sm mb-6">All proposal statuses by month</p>
               <ResponsiveContainer width="100%" height={350}>
                 <BarChart data={analytics}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#475569" />
@@ -575,7 +575,7 @@ function AdminDashboard() {
 
 
 
-            <div className="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl border border-slate-600/30">
+            <div className="bg-white to-white p-8 rounded-2xl shadow-sm border border-slate-200\">
               <Announcements ref={announcementsRef} showCreateForm={true} theme="dark" />
             </div>
           </>
@@ -583,10 +583,10 @@ function AdminDashboard() {
 
         {activeTab === "users" && (
           <>
-            <h1 className="text-5xl font-black text-white mb-2 tracking-tight">Users Management</h1>
-            <p className="text-slate-400 text-lg mb-8">Monitor and manage platform users</p>
+            <h1 className="text-5xl font-black text-slate-900 mb-2 tracking-tight">Users Management</h1>
+            <p className="text-slate-600 text-lg mb-8">Monitor and manage platform users</p>
 
-            <div className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl shadow-2xl border border-slate-600/30 overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden\">
               <table className="min-w-full">
                 <thead className="bg-gradient-to-r from-green-900/50 to-violet-900/50 border-b border-slate-600/30">
                   <tr>
