@@ -245,7 +245,7 @@ function AdminDashboard() {
               </div>
               <button
                 onClick={() => announcementsRef.current?.openModal?.()}
-                className="flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-8 py-4 rounded-xl hover:from-indigo-700 hover:to-violet-700 transition-all shadow-lg hover:shadow-xl font-bold text-lg"
+                className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-violet-600 text-white px-8 py-4 rounded-xl hover:from-green-700 hover:to-violet-700 transition-all shadow-lg hover:shadow-xl font-bold text-lg"
               >
                 <PlusIcon className="h-6 w-6" />
                 Post Announcement
@@ -403,7 +403,7 @@ function AdminDashboard() {
                           {paginatedReviewers.map((reviewer, idx) => (
                             <div
                               key={reviewer.id || idx}
-                              className="flex items-center justify-between p-4 bg-slate-700/50 rounded-xl border border-slate-600/30 hover:border-indigo-500/50 transition-colors"
+                              className="flex items-center justify-between p-4 bg-slate-700/50 rounded-xl border border-slate-600/30 hover:border-green-500/50 transition-colors"
                             >
                               <div className="flex-1">
                                 <p className="font-semibold text-white mb-1">{reviewer.name || "Unknown"}</p>
@@ -588,7 +588,7 @@ function AdminDashboard() {
 
             <div className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl shadow-2xl border border-slate-600/30 overflow-hidden">
               <table className="min-w-full">
-                <thead className="bg-gradient-to-r from-indigo-900/50 to-violet-900/50 border-b border-slate-600/30">
+                <thead className="bg-gradient-to-r from-green-900/50 to-violet-900/50 border-b border-slate-600/30">
                   <tr>
                     <th className="px-6 py-4 text-left font-bold text-slate-100">ID</th>
                     <th className="px-6 py-4 text-left font-bold text-slate-100">Name</th>
@@ -690,13 +690,13 @@ function AdminDashboard() {
                           setSelectedPaper(paper)
                           setShowAssignModal(true)
                         }}
-                        className="flex-1 bg-gradient-to-r from-indigo-600 to-violet-600 text-white py-3 rounded-xl font-bold hover:from-indigo-700 hover:to-violet-700 transition-all shadow-lg"
+                        className="flex-1 bg-gradient-to-r from-green-600 to-violet-600 text-white py-3 rounded-xl font-bold hover:from-green-700 hover:to-violet-700 transition-all shadow-lg"
                       >
                         {paper.reviewer ? "Change Reviewer" : "Assign Reviewer"}
                       </button>
                       <select
                         onChange={(e) => handleUpdateStatus(paper.id, e.target.value)}
-                        className="bg-slate-700/50 border-2 border-slate-600 text-slate-100 px-4 py-3 rounded-xl font-medium hover:border-indigo-500 transition-all outline-none focus:border-indigo-500"
+                        className="bg-slate-700/50 border-2 border-slate-600 text-slate-100 px-4 py-3 rounded-xl font-medium hover:border-green-500 transition-all outline-none focus:border-green-500"
                       >
                         <option value="">Update Status</option>
                         <option value="submitted">Submitted</option>
@@ -721,7 +721,7 @@ function AdminDashboard() {
                     <select
                       value={selectedReviewer}
                       onChange={(e) => setSelectedReviewer(e.target.value)}
-                      className="w-full bg-slate-700/50 text-slate-100 p-3 rounded-xl border-2 border-slate-600 focus:border-indigo-500 focus:outline-none transition-colors font-medium"
+                      className="w-full bg-slate-700/50 text-slate-100 p-3 rounded-xl border-2 border-slate-600 focus:border-green-500 focus:outline-none transition-colors font-medium"
                     >
                       <option value="">Choose a reviewer...</option>
                       {reviewers.map((reviewer) => (
@@ -737,7 +737,7 @@ function AdminDashboard() {
                     <textarea
                       value={adminNotes}
                       onChange={(e) => setAdminNotes(e.target.value)}
-                      className="w-full bg-slate-700/50 text-slate-100 p-3 rounded-xl border-2 border-slate-600 focus:border-indigo-500 focus:outline-none transition-colors font-medium"
+                      className="w-full bg-slate-700/50 text-slate-100 p-3 rounded-xl border-2 border-slate-600 focus:border-green-500 focus:outline-none transition-colors font-medium"
                       rows="4"
                       placeholder="Add any notes for the reviewer..."
                     />
@@ -747,7 +747,7 @@ function AdminDashboard() {
                     <button
                       onClick={handleAssignReviewer}
                       disabled={loading || !selectedReviewer}
-                      className="flex-1 bg-gradient-to-r from-indigo-600 to-violet-600 text-white py-3 rounded-xl font-bold hover:from-indigo-700 hover:to-violet-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                      className="flex-1 bg-gradient-to-r from-green-600 to-violet-600 text-white py-3 rounded-xl font-bold hover:from-green-700 hover:to-violet-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                     >
                       {loading ? "Assigning..." : "Assign Reviewer"}
                     </button>
