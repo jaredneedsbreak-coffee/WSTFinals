@@ -46,46 +46,46 @@ function LandingPage() {
           >
             <img src="https://minsu.edu.ph/template/images/logo.png" alt="ResearchEthics Logo" className="w-10 h-10" />
             <span className="text-xl font-bold text-slate-900">
-              Research<span className="text-indigo-600">Ethics</span>
+              Research<span className="text-green-600">Ethics</span>
             </span>
           </div>
 
           <div className="hidden md:flex gap-12 text-slate-600 font-medium">
             <button
               onClick={() => handleScroll("features")}
-              className="flex items-center gap-2 hover:text-indigo-600 transition-colors duration-200"
+              className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
             >
               <ShieldCheckIcon className="w-4 h-4" />
               Features
             </button>
             <button
               onClick={() => handleScroll("about")}
-              className="flex items-center gap-2 hover:text-indigo-600 transition-colors duration-200"
+              className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
             >
               <InformationCircleIcon className="w-4 h-4" />
               About
             </button>
             <button
               onClick={() => handleScroll("statistics")}
-              className="flex items-center gap-2 hover:text-indigo-600 transition-colors duration-200"
+              className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
             >
               Statistics
             </button>
             <button
               onClick={() => handleScroll("howItWorks")}
-              className="flex items-center gap-2 hover:text-indigo-600 transition-colors duration-200"
+              className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
             >
               How It Works
             </button>
             <button
               onClick={() => handleScroll("benefits")}
-              className="flex items-center gap-2 hover:text-indigo-600 transition-colors duration-200"
+              className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
             >
               Benefits
             </button>
             <button
               onClick={() => handleScroll("testimonials")}
-              className="flex items-center gap-2 hover:text-indigo-600 transition-colors duration-200"
+              className="flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
             >
               Testimonials
             </button>
@@ -94,13 +94,13 @@ function LandingPage() {
           <div className="flex gap-3">
             <button
               onClick={() => navigate("/login")}
-              className="px-6 py-2 text-slate-600 font-medium hover:text-indigo-600 transition-colors duration-200"
+              className="px-6 py-2 text-slate-600 font-medium hover:text-green-600 transition-colors duration-200"
             >
               Login
             </button>
             <button
               onClick={() => navigate("/signup")}
-              className="px-6 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-all duration-200 shadow-sm"
+              className="px-6 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-all duration-200 shadow-sm"
             >
               Sign Up
             </button>
@@ -114,7 +114,7 @@ function LandingPage() {
       >
         <div className="max-w-3xl mx-auto animate-fade-in">
           <h1 className="text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight">
-            Empowering Ethical <span className="text-indigo-600">Research</span>
+            Empowering Ethical <span className="text-green-600">Research</span>
           </h1>
           <p className="text-xl text-slate-600 mb-10 leading-relaxed">
             Streamline proposal reviews, ensure compliance, and uphold integrity — all through a centralized, intuitive
@@ -122,7 +122,7 @@ function LandingPage() {
           </p>
           <button
             onClick={() => navigate("/signup")}
-            className="px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="px-8 py-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             Get Started
           </button>
@@ -145,26 +145,26 @@ function LandingPage() {
 
       <section
         id="statistics"
-        className="py-20 lg:py-28 px-6 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white"
+        className="py-20 lg:py-28 px-6 bg-gradient-to-r from-green-600 to-green-700 text-white"
       >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16">Trusted by Leading Institutions</h2>
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div className="animate-fade-in">
               <div className="text-5xl lg:text-6xl font-bold mb-2">500+</div>
-              <p className="text-lg text-indigo-100">Active Institutions</p>
+              <p className="text-lg text-green-100">Active Institutions</p>
             </div>
             <div className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
               <div className="text-5xl lg:text-6xl font-bold mb-2">50K+</div>
-              <p className="text-lg text-indigo-100">Proposals Reviewed</p>
+              <p className="text-lg text-green-100">Proposals Reviewed</p>
             </div>
             <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
               <div className="text-5xl lg:text-6xl font-bold mb-2">99.9%</div>
-              <p className="text-lg text-indigo-100">Uptime Guarantee</p>
+              <p className="text-lg text-green-100">Uptime Guarantee</p>
             </div>
             <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
               <div className="text-5xl lg:text-6xl font-bold mb-2">24/7</div>
-              <p className="text-lg text-indigo-100">Support Available</p>
+              <p className="text-lg text-green-100">Support Available</p>
             </div>
           </div>
         </div>
@@ -179,7 +179,7 @@ function LandingPage() {
           <div className="grid md:grid-cols-4 gap-6">
             <div className="relative animate-slide-up">
               <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-indigo-600 text-white flex items-center justify-center text-2xl font-bold mb-4">
+                <div className="w-16 h-16 rounded-full bg-green-600 text-white flex items-center justify-center text-2xl font-bold mb-4">
                   1
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Submit Proposal</h3>
@@ -187,42 +187,42 @@ function LandingPage() {
               </div>
               {/* Connector line */}
               <div
-                className="hidden md:block absolute top-8 left-full w-6 h-1 bg-indigo-200"
+                className="hidden md:block absolute top-8 left-full w-6 h-1 bg-green-200"
                 style={{ marginLeft: "-12px" }}
               ></div>
             </div>
 
             <div className="relative animate-slide-up" style={{ animationDelay: "0.1s" }}>
               <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-indigo-600 text-white flex items-center justify-center text-2xl font-bold mb-4">
+                <div className="w-16 h-16 rounded-full bg-green-600 text-white flex items-center justify-center text-2xl font-bold mb-4">
                   2
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Review & Assess</h3>
                 <p className="text-slate-600">Ethics committee reviews and provides feedback on compliance</p>
               </div>
               <div
-                className="hidden md:block absolute top-8 left-full w-6 h-1 bg-indigo-200"
+                className="hidden md:block absolute top-8 left-full w-6 h-1 bg-green-200"
                 style={{ marginLeft: "-12px" }}
               ></div>
             </div>
 
             <div className="relative animate-slide-up" style={{ animationDelay: "0.2s" }}>
               <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-indigo-600 text-white flex items-center justify-center text-2xl font-bold mb-4">
+                <div className="w-16 h-16 rounded-full bg-green-600 text-white flex items-center justify-center text-2xl font-bold mb-4">
                   3
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Revise & Resubmit</h3>
                 <p className="text-slate-600">Researchers make improvements based on recommendations</p>
               </div>
               <div
-                className="hidden md:block absolute top-8 left-full w-6 h-1 bg-indigo-200"
+                className="hidden md:block absolute top-8 left-full w-6 h-1 bg-green-200"
                 style={{ marginLeft: "-12px" }}
               ></div>
             </div>
 
             <div className="relative animate-slide-up" style={{ animationDelay: "0.3s" }}>
               <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-indigo-600 text-white flex items-center justify-center text-2xl font-bold mb-4">
+                <div className="w-16 h-16 rounded-full bg-green-600 text-white flex items-center justify-center text-2xl font-bold mb-4">
                   4
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Get Approval</h3>
@@ -236,7 +236,7 @@ function LandingPage() {
       <section id="about" className="py-20 lg:py-28 px-6 bg-slate-900 text-white">
         <div className="max-w-4xl mx-auto text-center animate-fade-in">
           <div className="flex justify-center mb-6">
-            <InformationCircleIcon className="w-14 h-14 text-indigo-400" />
+            <InformationCircleIcon className="w-14 h-14 text-green-400" />
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold mb-8">About ResearchEthics</h2>
           <p className="text-lg lg:text-xl text-slate-300 leading-relaxed">
@@ -251,17 +251,17 @@ function LandingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <div className="flex justify-center mb-4">
-              <ShieldCheckIcon className="w-12 h-12 text-indigo-600" />
+              <ShieldCheckIcon className="w-12 h-12 text-green-600" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Key Features</h2>
             <p className="text-xl text-slate-600">Comprehensive tools designed for modern research institutions</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="group bg-white border-2 border-slate-200 rounded-xl p-8 hover:border-indigo-600 hover:shadow-lg transition-all duration-300 animate-slide-up">
+            <div className="group bg-white border-2 border-slate-200 rounded-xl p-8 hover:border-green-600 hover:shadow-lg transition-all duration-300 animate-slide-up">
               <div className="flex justify-center mb-6">
-                <div className="p-3 bg-indigo-100 rounded-lg group-hover:bg-indigo-600 transition-colors duration-300">
-                  <ClipboardDocumentCheckIcon className="w-8 h-8 text-indigo-600 group-hover:text-white transition-colors duration-300" />
+                <div className="p-3 bg-green-100 rounded-lg group-hover:bg-green-600 transition-colors duration-300">
+                  <ClipboardDocumentCheckIcon className="w-8 h-8 text-green-600 group-hover:text-white transition-colors duration-300" />
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Smart Proposal Tracking</h3>
@@ -271,12 +271,12 @@ function LandingPage() {
             </div>
 
             <div
-              className="group bg-white border-2 border-slate-200 rounded-xl p-8 hover:border-indigo-600 hover:shadow-lg transition-all duration-300 animate-slide-up"
+              className="group bg-white border-2 border-slate-200 rounded-xl p-8 hover:border-green-600 hover:shadow-lg transition-all duration-300 animate-slide-up"
               style={{ animationDelay: "0.1s" }}
             >
               <div className="flex justify-center mb-6">
-                <div className="p-3 bg-indigo-100 rounded-lg group-hover:bg-indigo-600 transition-colors duration-300">
-                  <UsersIcon className="w-8 h-8 text-indigo-600 group-hover:text-white transition-colors duration-300" />
+                <div className="p-3 bg-green-100 rounded-lg group-hover:bg-green-600 transition-colors duration-300">
+                  <UsersIcon className="w-8 h-8 text-green-600 group-hover:text-white transition-colors duration-300" />
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Reviewer Collaboration</h3>
@@ -287,12 +287,12 @@ function LandingPage() {
             </div>
 
             <div
-              className="group bg-white border-2 border-slate-200 rounded-xl p-8 hover:border-indigo-600 hover:shadow-lg transition-all duration-300 animate-slide-up"
+              className="group bg-white border-2 border-slate-200 rounded-xl p-8 hover:border-green-600 hover:shadow-lg transition-all duration-300 animate-slide-up"
               style={{ animationDelay: "0.2s" }}
             >
               <div className="flex justify-center mb-6">
-                <div className="p-3 bg-indigo-100 rounded-lg group-hover:bg-indigo-600 transition-colors duration-300">
-                  <ShieldCheckIcon className="w-8 h-8 text-indigo-600 group-hover:text-white transition-colors duration-300" />
+                <div className="p-3 bg-green-100 rounded-lg group-hover:bg-green-600 transition-colors duration-300">
+                  <ShieldCheckIcon className="w-8 h-8 text-green-600 group-hover:text-white transition-colors duration-300" />
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Secure Data Management</h3>
@@ -313,7 +313,7 @@ function LandingPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="flex gap-4 animate-slide-up">
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-600">
                   <ShieldCheckIcon className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -327,7 +327,7 @@ function LandingPage() {
 
             <div className="flex gap-4 animate-slide-up" style={{ animationDelay: "0.1s" }}>
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-600">
                   <UsersIcon className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -341,7 +341,7 @@ function LandingPage() {
 
             <div className="flex gap-4 animate-slide-up" style={{ animationDelay: "0.2s" }}>
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-600">
                   <ClipboardDocumentCheckIcon className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -355,7 +355,7 @@ function LandingPage() {
 
             <div className="flex gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-600">
                   <InformationCircleIcon className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -379,7 +379,7 @@ function LandingPage() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-slate-800 rounded-lg p-8 border border-slate-700 hover:border-indigo-500 transition-colors duration-300 animate-slide-up">
+            <div className="bg-slate-800 rounded-lg p-8 border border-slate-700 hover:border-green-500 transition-colors duration-300 animate-slide-up">
               <div className="flex items-center gap-4 mb-4">
                 <img
                   src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
@@ -398,7 +398,7 @@ function LandingPage() {
             </div>
 
             <div
-              className="bg-slate-800 rounded-lg p-8 border border-slate-700 hover:border-indigo-500 transition-colors duration-300 animate-slide-up"
+              className="bg-slate-800 rounded-lg p-8 border border-slate-700 hover:border-green-500 transition-colors duration-300 animate-slide-up"
               style={{ animationDelay: "0.1s" }}
             >
               <div className="flex items-center gap-4 mb-4">
@@ -419,7 +419,7 @@ function LandingPage() {
             </div>
 
             <div
-              className="bg-slate-800 rounded-lg p-8 border border-slate-700 hover:border-indigo-500 transition-colors duration-300 animate-slide-up"
+              className="bg-slate-800 rounded-lg p-8 border border-slate-700 hover:border-green-500 transition-colors duration-300 animate-slide-up"
               style={{ animationDelay: "0.2s" }}
             >
               <div className="flex items-center gap-4 mb-4">
@@ -442,19 +442,19 @@ function LandingPage() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 px-6 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white">
+      <section className="py-20 lg:py-28 px-6 bg-gradient-to-r from-green-600 to-green-700 text-white">
         <div className="max-w-4xl mx-auto text-center animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">Ready to Transform Your Research Ethics Process?</h2>
-          <p className="text-xl text-indigo-100 mb-10">
+          <p className="text-xl text-green-100 mb-10">
             Join 500+ institutions already using ResearchEthics to streamline proposals and uphold integrity.
           </p>
           <button
             onClick={() => navigate("/signup")}
-            className="px-10 py-4 bg-white text-indigo-600 font-bold rounded-lg hover:bg-slate-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 inline-block"
+            className="px-10 py-4 bg-white text-green-600 font-bold rounded-lg hover:bg-slate-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 inline-block"
           >
             Start Your Free Trial
           </button>
-          <p className="text-indigo-100 text-sm mt-4">No credit card required. Setup takes less than 5 minutes.</p>
+          <p className="text-green-100 text-sm mt-4">No credit card required. Setup takes less than 5 minutes.</p>
         </div>
       </section>
 
