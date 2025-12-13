@@ -124,7 +124,7 @@ function UserDashboard() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-14 h-14 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
+          <div className="w-14 h-14 border-4 border-green-200 border-t-green-600 rounded-full animate-spin"></div>
           <p className="text-slate-600 font-medium">Loading your dashboard...</p>
         </div>
       </div>
@@ -138,7 +138,7 @@ function UserDashboard() {
         <header className="bg-white border-b border-slate-200 px-8 py-5 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 via-indigo-600 to-blue-600 rounded-xl flex items-center justify-center shadow-md">
+              <div className="w-14 h-14 bg-gradient-to-br from-green-500 via-green-600 to-blue-600 rounded-xl flex items-center justify-center shadow-md">
                 <UserIcon className="h-7 w-7 text-white" />
               </div>
               <div>
@@ -151,7 +151,7 @@ function UserDashboard() {
               <Notifications />
               <button
                 onClick={() => setShowSubmitForm(!showSubmitForm)}
-                className="flex items-center gap-2 bg-indigo-600 text-white px-5 py-2.5 rounded-lg hover:bg-indigo-700 transition-colors duration-200 font-semibold shadow-sm hover:shadow-md"
+                className="flex items-center gap-2 bg-green-600 text-white px-5 py-2.5 rounded-lg hover:bg-green-700 transition-colors duration-200 font-semibold shadow-sm hover:shadow-md"
               >
                 <PlusIcon className="h-5 w-5" />
                 Submit Paper
@@ -166,13 +166,13 @@ function UserDashboard() {
             <div className="flex-1 p-8 overflow-y-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 {/* Total Papers Card */}
-                <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-shadow">
+                <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-shadow">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-semibold text-indigo-100">Total Papers</h3>
-                    <DocumentIcon className="h-5 w-5 text-indigo-200" />
+                    <h3 className="text-sm font-semibold text-green-100">Total Papers</h3>
+                    <DocumentIcon className="h-5 w-5 text-green-200" />
                   </div>
                   <p className="text-3xl font-bold">{stats.total}</p>
-                  <p className="text-xs text-indigo-100 mt-2">Submissions submitted</p>
+                  <p className="text-xs text-green-100 mt-2">Submissions submitted</p>
                 </div>
 
                 {/* Approved Papers Card */}
@@ -209,7 +209,7 @@ function UserDashboard() {
               {/* Submission Trends */}
               <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 mb-8">
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-1 h-6 bg-gradient-to-b from-indigo-600 to-purple-600 rounded-full"></div>
+                  <div className="w-1 h-6 bg-gradient-to-b from-green-600 to-purple-600 rounded-full"></div>
                   <h2 className="text-lg font-semibold text-slate-900">Submission Trends</h2>
                 </div>
 
@@ -227,7 +227,7 @@ function UserDashboard() {
                           color: "#f1f5f9",
                         }}
                       />
-                      <Bar dataKey="submissions" fill="#6366f1" radius={[8, 8, 0, 0]} name="Submissions" />
+                      <Bar dataKey="submissions" fill="#16a34a" radius={[8, 8, 0, 0]} name="Submissions" />
                     </BarChart>
                   </ResponsiveContainer>
                 ) : (
@@ -240,7 +240,7 @@ function UserDashboard() {
               {/* Submission Status Overview */}
               <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 mb-8">
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-1 h-6 bg-gradient-to-b from-indigo-600 to-purple-600 rounded-full"></div>
+                  <div className="w-1 h-6 bg-gradient-to-b from-green-600 to-purple-600 rounded-full"></div>
                   <h2 className="text-lg font-semibold text-slate-900">Submission Status Overview</h2>
                 </div>
 
@@ -360,7 +360,7 @@ function UserDashboard() {
             <div className="w-96 border-l border-slate-200 bg-white shadow-sm overflow-hidden flex flex-col">
               <div className="sticky top-0 bg-gradient-to-r from-slate-50 to-slate-100 border-b border-slate-200 px-6 py-6 z-10">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg shadow-md">
+                  <div className="p-2.5 bg-gradient-to-br from-green-500 to-purple-500 rounded-lg shadow-md">
                     <SparklesIcon className="h-5 w-5 text-white" />
                   </div>
                   <div>
@@ -386,10 +386,10 @@ function UserDashboard() {
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setShowSubmitForm(false)}></div>
 
           <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full animate-slideUp z-10 overflow-hidden">
-            <div className="bg-gradient-to-r from-indigo-600 to-blue-600 px-8 py-7 flex items-center justify-between">
+            <div className="bg-gradient-to-r from-green-600 to-blue-600 px-8 py-7 flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-bold text-white">Submit Research Paper</h2>
-                <p className="text-indigo-100 text-sm mt-1">Upload your proposal for ethics review</p>
+                <p className="text-green-100 text-sm mt-1">Upload your proposal for ethics review</p>
               </div>
               <button
                 onClick={() => setShowSubmitForm(false)}
@@ -408,7 +408,7 @@ function UserDashboard() {
                   placeholder="Enter your research paper title..."
                   value={formData.title}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
                   required
                 />
               </div>
@@ -421,7 +421,7 @@ function UserDashboard() {
                     name="paperFile"
                     accept=".pdf,.doc,.docx"
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all file:mr-4 file:bg-indigo-100 file:text-indigo-700 file:px-3 file:py-1 file:rounded file:border-0 file:font-semibold cursor-pointer"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all file:mr-4 file:bg-green-100 file:text-green-700 file:px-3 file:py-1 file:rounded file:border-0 file:font-semibold cursor-pointer"
                     required
                   />
                 </div>
@@ -432,8 +432,8 @@ function UserDashboard() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className={`flex-1 bg-indigo-600 text-white py-3 rounded-lg font-semibold transition-all duration-200 ${
-                    submitting ? "opacity-60 cursor-not-allowed" : "hover:bg-indigo-700 shadow-sm hover:shadow-md"
+                  className={`flex-1 bg-green-600 text-white py-3 rounded-lg font-semibold transition-all duration-200 ${
+                    submitting ? "opacity-60 cursor-not-allowed" : "hover:bg-green-700 shadow-sm hover:shadow-md"
                   }`}
                 >
                   {submitting ? (

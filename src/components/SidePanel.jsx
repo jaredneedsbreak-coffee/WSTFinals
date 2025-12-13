@@ -42,7 +42,7 @@ function SidePanel() {
             />
             <div>
               <span className="text-lg font-bold tracking-tight">Research</span>
-              <span className="text-lg font-bold text-indigo-400">Ethics</span>
+              <span className="text-lg font-bold text-green-400">Ethics</span>
             </div>
           </div>
 
@@ -65,7 +65,7 @@ function SidePanel() {
                     flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group relative
                     ${
                       isActive
-                        ? "bg-indigo-600/20 text-indigo-300 border border-indigo-500/30"
+                        ? "bg-green-600/20 text-green-300 border border-green-500/30"
                         : "text-slate-400 hover:text-slate-200"
                     }
                     ${hovered === idx && !isActive ? "bg-slate-700/50" : ""}
@@ -73,7 +73,7 @@ function SidePanel() {
                 >
                   <Icon
                     className={`h-5 w-5 transition-all duration-200 ${
-                      isActive ? "text-indigo-400" : "text-slate-500 group-hover:text-slate-300"
+                      isActive ? "text-green-400" : "text-slate-500 group-hover:text-slate-300"
                     }`}
                   />
                   <span
@@ -82,7 +82,7 @@ function SidePanel() {
                     {item.name}
                   </span>
                   {isActive && (
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-400 rounded-l-lg"></div>
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-green-400 rounded-l-lg"></div>
                   )}
                 </button>
               )
