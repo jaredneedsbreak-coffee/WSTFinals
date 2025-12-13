@@ -576,7 +576,7 @@ function AdminDashboard() {
 
 
             <div className="bg-white to-white p-8 rounded-2xl shadow-sm border border-slate-200\">
-              <Announcements ref={announcementsRef} showCreateForm={true} theme="dark" />
+              <Announcements ref={announcementsRef} showCreateForm={true} theme="light" />
             </div>
           </>
         )}
