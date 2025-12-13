@@ -63,20 +63,20 @@ function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-slate-50 overflow-hidden relative">
-      <div className="absolute w-96 h-96 bg-indigo-200 rounded-full blur-3xl opacity-20 animate-pulse -top-40 -left-40"></div>
+      <div className="absolute w-96 h-96 bg-green-200 rounded-full blur-3xl opacity-20 animate-pulse -top-40 -left-40"></div>
       <div className="absolute w-80 h-80 bg-blue-200 rounded-full blur-3xl opacity-10 animate-pulse top-32 -right-32"></div>
 
       <div className="relative z-10 w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
           {/* Header Section */}
-          <div className="bg-gradient-to-r from-indigo-600 to-blue-600 px-8 py-12 text-center">
+          <div className="bg-gradient-to-r from-green-600 to-blue-600 px-8 py-12 text-center">
             <img
               src="https://minsu.edu.ph/template/images/logo.png"
               alt="ResearchEthics Logo"
               className="w-20 h-20 mx-auto mb-4 rounded-lg bg-white p-2 shadow-lg"
             />
             <h1 className="text-2xl font-bold text-white mb-1">Welcome Back</h1>
-            <p className="text-indigo-100 text-sm">Access your research ethics portal</p>
+            <p className="text-green-100 text-sm">Access your research ethics portal</p>
           </div>
 
           {/* Form Section */}
@@ -87,7 +87,7 @@ function Login() {
                 <label htmlFor="email" className="text-sm font-semibold text-slate-700">
                   Email Address
                 </label>
-                <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border border-slate-200 focus-within:border-indigo-500 focus-within:bg-white focus-within:shadow-md transition-all">
+                <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border border-slate-200 focus-within:border-green-500 focus-within:bg-white focus-within:shadow-md transition-all">
                   <UserIcon className="h-5 w-5 text-slate-400" />
                   <input
                     id="email"
@@ -107,7 +107,7 @@ function Login() {
                 <label htmlFor="password" className="text-sm font-semibold text-slate-700">
                   Password
                 </label>
-                <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border border-slate-200 focus-within:border-indigo-500 focus-within:bg-white focus-within:shadow-md transition-all">
+                <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border border-slate-200 focus-within:border-green-500 focus-within:bg-white focus-within:shadow-md transition-all">
                   <LockClosedIcon className="h-5 w-5 text-slate-400" />
                   <input
                     id="password"
@@ -140,7 +140,7 @@ function Login() {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold py-3 rounded-lg transition-all mt-2 disabled:opacity-60 disabled:cursor-not-allowed shadow-md hover:shadow-lg"
+                className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold py-3 rounded-lg transition-all mt-2 disabled:opacity-60 disabled:cursor-not-allowed shadow-md hover:shadow-lg"
               >
                 {loading ? (
                   <>
@@ -160,7 +160,7 @@ function Login() {
                 <button
                   type="button"
                   onClick={() => navigate("/")}
-                  className="flex-1 flex items-center justify-center gap-2 text-slate-600 hover:text-indigo-600 font-medium py-2 rounded-lg hover:bg-slate-50 transition-all text-sm"
+                  className="flex-1 flex items-center justify-center gap-2 text-slate-600 hover:text-green-600 font-medium py-2 rounded-lg hover:bg-slate-50 transition-all text-sm"
                 >
                   <ArrowLeftIcon className="h-4 w-4" />
                   Back
@@ -169,7 +169,7 @@ function Login() {
                 <button
                   type="button"
                   onClick={() => navigate("/signup")}
-                  className="flex-1 text-center text-slate-600 hover:text-indigo-600 font-medium py-2 rounded-lg hover:bg-slate-50 transition-all text-sm"
+                  className="flex-1 text-center text-slate-600 hover:text-green-600 font-medium py-2 rounded-lg hover:bg-slate-50 transition-all text-sm"
                 >
                   Sign Up
                 </button>

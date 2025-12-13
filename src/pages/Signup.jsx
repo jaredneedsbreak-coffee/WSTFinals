@@ -75,12 +75,12 @@ function Signup() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden relative py-8">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-100 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-green-100 rounded-full blur-3xl opacity-30"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
       </div>
 
       <div className="relative z-10 w-full max-w-md">
-        <div className="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-t-2xl px-8 py-12 text-white text-center shadow-lg">
+        <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-t-2xl px-8 py-12 text-white text-center shadow-lg">
           <div className="flex justify-center mb-4">
             <img
               src="https://minsu.edu.ph/template/images/logo.png"
@@ -92,15 +92,15 @@ function Signup() {
             <UserPlusIcon className="w-8 h-8" />
             Create Account
           </h2>
-          <p className="text-indigo-100 text-sm">Join our research ethics community</p>
+          <p className="text-green-100 text-sm">Join our research ethics community</p>
         </div>
 
         <div className="bg-white rounded-b-2xl shadow-lg p-8 border border-slate-200">
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div className="relative">
               <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
-              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-indigo-500 focus-within:bg-white transition-all">
-                <UserIcon className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-green-500 focus-within:bg-white transition-all">
+                <UserIcon className="w-5 h-5 text-green-600 flex-shrink-0" />
                 <input
                   type="text"
                   name="name"
@@ -115,8 +115,8 @@ function Signup() {
 
             <div className="relative">
               <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
-              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-indigo-500 focus-within:bg-white transition-all">
-                <EnvelopeIcon className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-green-500 focus-within:bg-white transition-all">
+                <EnvelopeIcon className="w-5 h-5 text-green-600 flex-shrink-0" />
                 <input
                   type="email"
                   name="email"
@@ -128,7 +128,7 @@ function Signup() {
                 />
               </div>
               {detectedRole !== "user" && (
-                <p className="text-xs text-indigo-600 mt-2 font-medium">
+                <p className="text-xs text-green-600 mt-2 font-medium">
                   Role detected: <span className="capitalize font-bold">{detectedRole}</span>
                 </p>
               )}
@@ -136,8 +136,8 @@ function Signup() {
 
             <div className="relative">
               <label className="block text-sm font-semibold text-slate-700 mb-2">Password</label>
-              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-indigo-500 focus-within:bg-white transition-all">
-                <LockClosedIcon className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-green-500 focus-within:bg-white transition-all">
+                <LockClosedIcon className="w-5 h-5 text-green-600 flex-shrink-0" />
                 <input
                   type="password"
                   name="password"
@@ -152,8 +152,8 @@ function Signup() {
 
             <div className="relative">
               <label className="block text-sm font-semibold text-slate-700 mb-2">Confirm Password</label>
-              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-indigo-500 focus-within:bg-white transition-all">
-                <LockClosedIcon className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+              <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-lg border-2 border-slate-200 focus-within:border-green-500 focus-within:bg-white transition-all">
+                <LockClosedIcon className="w-5 h-5 text-green-600 flex-shrink-0" />
                 <input
                   type="password"
                   name="confirmPassword"
@@ -182,7 +182,7 @@ function Signup() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md"
+              className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md"
             >
               {loading ? (
                 <>
@@ -200,7 +200,7 @@ function Signup() {
             <button
               type="button"
               onClick={() => navigate("/")}
-              className="w-full flex items-center justify-center gap-2 text-slate-700 hover:text-indigo-600 hover:bg-indigo-50 py-2 px-4 rounded-lg transition-all font-medium text-sm"
+              className="w-full flex items-center justify-center gap-2 text-slate-700 hover:text-green-600 hover:bg-green-50 py-2 px-4 rounded-lg transition-all font-medium text-sm"
             >
               <ArrowLeftIcon className="w-4 h-4" />
               Back to Home
@@ -210,7 +210,7 @@ function Signup() {
               Already have an account?{" "}
               <span
                 onClick={() => navigate("/login")}
-                className="text-indigo-600 font-semibold hover:text-indigo-700 cursor-pointer transition-colors"
+                className="text-green-600 font-semibold hover:text-green-700 cursor-pointer transition-colors"
               >
                 Log in
               </span>
